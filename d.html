@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>D</title>
+<style>
+/* 親要素・縦書き・スクロール設定 */
+#reading-text {
+    writing-mode: vertical-rl;
+    
+    font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue",
+                 "Yu Gothic";
+    
+    height: 90vh;
+    width: 100vw;
+    overflow-x: auto;
+    overflow-y: hidden;
+
+    font-size: 3vw;   /* 文字サイズ */
+    line-height: 1.5;    /* 行間 */
+    
+    padding-top: 2vh;
+    padding-bottom: 2vh;
+    padding-left: 5vw;   /* 左側はそのまま */
+    padding-right: 9vw; /* 右側を広めに */
+    
+    margin: 0;
+}
+#reading-text p {
+    margin: 0;
+    padding: 0;
+    white-space: normal;
+}
+
+/* ト書き用インデント */
+.indent-3 {
+    display: inline-block; /* 行頭に反映させる */
+    padding-top: 2em;     /* 3文字分下げ */
+}
+
+.indent-4 {
+    font-weight: 250;
+}
+
+.indent-5 {
+    font-weight: 500;
+}
+
+/* スマホ用調整 */
+@media (max-width: 600px) {
+    #reading-text {
+        font-size: 9vw;
+        line-height: 1.3;  /* 行間 */
+        height: 80vh;
+        padding-top: 1vh;
+        padding-bottom: 1vh;
+        padding-right: 9vw;
+        padding-left: 9vw;
+    }
+    .indent-3 {
+        padding-top: 1em;  /* ト書きインデント維持 */
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div id="reading-text">
+    <p><span class="indent-4">「これからあつまったりすること」は、私が広場で書いた散文や、集まることについての文章を、セリフとト書き（段が下がっている、状況について文）の形式にしたテキストです。ここで、身体を動かしたりしながら読み上げたりすることも、座って読むこともできます。</span></p>
+    <br>
+    <p><span class="indent-5">D</span></p><br>
+    <p>メッキ板の付いた箱馬と、その周りには、このテキストが埋め込まれたQRコードがある。</p><br><br>
+    <p><span class="indent-3">「パフォーマティビティ」という概念（ジュディス・バトラー）について、アーティストの田中功起が、身体の集合がもつ連鎖性として論じているテキストを、広場で読み上げてみる。</span></p>
+    <br>
+    <p>「集合した諸身体は、たとえそれらが黙って立っていようと、私たちは使い捨てにできるわけではない。東日本大震災後の反原発運動は、生きるための基盤／インフラストラクチャーに対する権利を主張するものであったと思う。人々は集まり、その集まりが呼びかけとなり、さらに多くの人々を集める。集合する身体を見た誰かが、そのパフォーマティヴィティに誘われてさらに集まっていく。身体はそこに集まるだけで生の権利を表明していたわけである。」</p>
+    <br>
+    <p><span class="indent-3">広場をうろついてみる。周りにいる他の人は、出かけた先で見かけたデモのことを思い出しているみたいに見える。しばらくしたら、どこかいいところで、次のスピーチを始めようとする。箱馬を使うこともできる。</span></p><br>
+    <p>私は。集まることが価値として読まれてしまう状況を、手放しに語ることができるだろうか。
+    「普通の市民」は、広場のいたるところに繰り出し、すでに共に生きている人に、取り返しのつかない傷を与えてきた。
+        集まろうと思ったら集まれる、マジョリティ性の強い人が、集まることについて、「生の権利」について何を語り得るだろうか。私が「集まること」にどのような意味があるのだろうか。
+        </p></span></p>
+    <br>
+    <p><span class="indent-3">集まれるだけの身体は、ここにあるだけで、呼びかけることも、連帯などもできるはずもなく、傷つけてばかりの身体は、背中に垂木を刺したようにして、持つことを許された言葉だけを持って、看板になって、これからようやく集まれるかもしれない。
+     <br>
+    <br>
+    <p><span class="indent-3">スマートフォンを持った人たちは、広場を歩きまわり、地面のQRコードを読み込む。看板の前を通り過ぎていく人もいる。QRコードを掲げる人もいる。</span></p>
+    <br>
+    <br>
+    <p><span class="indent-4">田中功起, パフォーマンス以後のパフォーマティヴィティについて,美術手帖, 2018,70（1068）,p121. <br></span></p>
+   
+</div>
+
+<script>
+    window.addEventListener("load", () => {
+      // ページを強制的に一番右へ
+      document.documentElement.scrollLeft = document.documentElement.scrollWidth;
+      document.body.scrollLeft = document.body.scrollWidth;
+    });
+    </script>
+
+</body>
+</html>
