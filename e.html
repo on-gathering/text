@@ -146,8 +146,16 @@ br {
 <!-- 右端に強制 -->
 <script>
 window.addEventListener("load", () => {
-    document.documentElement.scrollLeft = document.documentElement.scrollWidth;
-    document.body.scrollLeft = document.body.scrollWidth;
+    const el = document.getElementById("reading-text");
+
+    requestAnimationFrame(() => {
+        el.scrollLeft = el.scrollWidth;
+
+        // Safari保険
+        setTimeout(() => {
+            el.scrollLeft = el.scrollWidth;
+        }, 50);
+    });
 });
 </script>
 
