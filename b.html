@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>B</title>
+
 <style>
 /* =========================
    全体リセット
@@ -15,9 +16,40 @@ html, body {
 }
 
 /* =========================
-   縦書きスクロール本体
+   横スクロール枠
 ========================= */
 #reading-text {
+    width: 100vw;
+    height: 85vh;
+
+    display: flex;
+    flex-direction: row;
+
+    overflow-x: auto;
+    overflow-y: hidden;
+
+    -webkit-overflow-scrolling: auto;
+    box-sizing: border-box;
+
+    letter-spacing: 0.03em;
+}
+
+/* =========================
+   左右スペーサー
+========================= */
+.spacer {
+    width: 6vw;
+    flex-shrink: 0;
+}
+
+.spacer:first-child {
+    width: 16vw;
+}
+
+/* =========================
+   縦書き本文
+========================= */
+.content {
     writing-mode: vertical-rl;
     text-orientation: mixed;
 
@@ -28,55 +60,25 @@ html, body {
         "Hiragino Sans",
         sans-serif;
 
-    width: 100vw;
-    height: 85vh;
-
-    display: flex;
-    flex-direction: row;
-
-    overflow-x: auto;
-    overflow-y: hidden;
-
-    -webkit-overflow-scrolling: auto; /* Safari慣性OFF */
-
     font-size: 9vw;
     line-height: 1.3;
 
+    padding: 4vh 5vw;
     box-sizing: border-box;
-}
-
-/* =========================
-   左右スペーサー（超重要）
-========================= */
-.spacer {
-    width: 12vw;
-    height: 6vw;
-    flex-shrink: 0;
-}
-.spacer:first-child {
-    width: 16vw;  /* ← 12 → 16 に */
-}
-
-/* =========================
-   テキスト本体
-========================= */
-.content {
-    padding-left: 6vw;
-    padding-right: 6vw;
 }
 
 /* =========================
    段落・改行
 ========================= */
-#reading-text p {
+.content p {
     margin: 0;
     padding: 0;
     white-space: normal;
-    font-weight: 300;
+    font-weight: 350;
 }
 
 br {
-    line-height: 0.8em; /* 行間用 */
+    line-height: 0.8em;
 }
 
 /* =========================
@@ -96,61 +98,89 @@ br {
     font-weight: 500;
 }
 
+/* =========================
+   PC表示
+========================= */
 @media (min-width: 601px) {
 
-#reading-text {
-    height: 90vh;
-    font-size: 3vw;      /* ← 以前に近いサイズ */
-    line-height: 1.5;
+    #reading-text {
+        height: 90vh;
+    }
 
-    -webkit-overflow-scrolling: auto;
-}
+    .content {
+        font-size: 3vw;
+        line-height: 1.5;
+        padding-left: 4vw;
+        padding-right: 4vw;
+    }
 
-.content {
-    padding-left: 4vw;
-    padding-right: 4vw;
-}
+    .spacer {
+        width: 8vw;
+    }
 
-.spacer {
-    width: 8vw;
-}
+    .spacer:first-child {
+        width: 10vw;
+    }
 
-/* 左端だけ少し広め（スマホほどではない） */
-.spacer:first-child {
-    width: 10vw;
+    .indent-4 {
+        font-size: 0.9em;
+    }
 }
-
-.indent-4 {
-    font-size: 0.9em;
-}
-}
-
 </style>
 </head>
 
 <body>
 
 <div id="reading-text">
-    <p><span class="indent-4">「これからあつまったりすること」は、私が広場で書いた散文や、集まることについての文章を、セリフとト書き（段が下がっている、状況について文）の形式にしたテキストです。ここで、身体を動かしたりしながら読み上げたりすることも、座って読むこともできます。</span></p>
-    <br>
-    <p><span class="indent-5">B</span></p><br>
-    <p>メッキ板の付いた箱馬と、その周りには、このテキストが埋め込まれたQRコードがある。</p><br><br>
-    <p><span class="indent-3">放送が始まる。上り四音チャイムと、サイレンの音。</span></p>
-    <br>
-    <p>「訓練、訓練。ミサイル発射。訓練放送です。ミサイルが発射されたものとみられます。訓練放送です。建物の中、または地下に避難してください。」</p>
-    <br>
-    <p><span class="indent-3">下り四音チャイムが二回流れる。</p></span></p>
-    <br>
-    <p><span class="indent-3">訓練で、ミサイルが発射されて、広場にいた人たちの身体は、建物に向かう。広場の人はミサイルを現実化してきた。<br>訓練はミサイルを発射して、ミサイルは身体を集める。
-    <br>
-    <br>
-    <p><span class="indent-3">訓練が終わり、スマートフォンを持った人たちがいる。看板の前を通り過ぎて帰っていく人もいる。QRコードを掲げる人もいる。</span></p>
-    
-   
+    <div class="spacer"></div>
+
+    <div class="content">
+
+        <p><span class="indent-4">
+        「これからあつまったりすること」は、私が広場で書いた散文や、集まることについての文章を、セリフとト書き（段が下がっている、状況について文）の形式にしたテキストです。ここで、身体を動かしたりしながら読み上げたりすることも、座って読むこともできます。
+        </span></p>
+        <br>
+
+        <p><span class="indent-5">B</span></p>
+        <br>
+
+        <p>
+        メッキ板の付いた箱馬と、その周りには、このテキストが埋め込まれたQRコードがある。
+        </p>
+        <br><br>
+
+        <p><span class="indent-3">
+        放送が始まる。上り四音チャイムと、サイレンの音。
+        </span></p>
+        <br>
+
+        <p>
+        「訓練、訓練。ミサイル発射。訓練放送です。ミサイルが発射されたものとみられます。訓練放送です。建物の中、または地下に避難してください。」
+        </p>
+        <br>
+
+        <p><span class="indent-3">
+        下り四音チャイムが二回流れる。
+        </span></p>
+        <br>
+
+        <p><span class="indent-3">
+        訓練で、ミサイルが発射されて、広場にいた人たちの身体は、建物に向かう。広場の人はミサイルを現実化してきた。<br>
+        訓練はミサイルを発射して、ミサイルは身体を集める。
+        </span></p>
+        <br><br>
+
+        <p><span class="indent-3">
+        訓練が終わり、スマートフォンを持った人たちがいる。看板の前を通り過ぎて帰っていく人もいる。QRコードを掲げる人もいる。
+        </span></p>
+
+    </div>
+
+    <div class="spacer"></div>
 </div>
 
 <script>
-/* 初期位置を「右端寄り」に固定（Safari対策） */
+/* Safari引っかかり防止 */
 window.addEventListener("load", () => {
     const el = document.getElementById("reading-text");
     requestAnimationFrame(() => {
