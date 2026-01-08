@@ -168,12 +168,19 @@ br {
 </div>
 
 <script>
-    window.addEventListener("load", () => {
-      // ページを強制的に一番右へ
-      document.documentElement.scrollLeft = document.documentElement.scrollWidth;
-      document.body.scrollLeft = document.body.scrollWidth;
+window.addEventListener("load", () => {
+    const el = document.getElementById("reading-text");
+
+    requestAnimationFrame(() => {
+        el.scrollLeft = el.scrollWidth;
+
+        // Safari保険
+        setTimeout(() => {
+            el.scrollLeft = el.scrollWidth;
+        }, 50);
     });
-    </script>
+});
+</script>
    
 <script>
 /* 初期位置を「右端寄り」に固定（Safari対策） */
