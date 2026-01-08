@@ -4,65 +4,104 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>C</title>
+
 <style>
-/* 親要素・縦書き・スクロール設定 */
+html, body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
 #reading-text {
-    writing-mode: vertical-rl;
-    
-    font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue",
-                 "Yu Gothic";
-    
-    height: 90vh;
     width: 100vw;
+    height: 85vh;
+    display: flex;
+    flex-direction: row;
     overflow-x: auto;
     overflow-y: hidden;
-
-    font-size: 3vw;   /* 文字サイズ */
-    line-height: 1.5;    /* 行間 */
-    
-    padding-top: 2vh;
-    padding-bottom: 2vh;
-    padding-left: 5vw;   /* 左側はそのまま */
-    padding-right: 9vw; /* 右側を広めに */
-    
-    margin: 0;
+    -webkit-overflow-scrolling: auto;
+    box-sizing: border-box;
+    letter-spacing: 0.03em;
 }
-#reading-text p {
+
+.spacer {
+    width: 6vw;
+    flex-shrink: 0;
+}
+
+.spacer:first-child {
+    width: 16vw;
+}
+
+.content {
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+
+    font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Yu Gothic",
+        "Hiragino Sans",
+        sans-serif;
+
+    font-size: 9vw;
+    line-height: 1.3;
+
+    padding-left: 5vw;
+    padding-right: 5vw;
+    padding-top: 4vh;
+    padding-bottom: 4vh;
+
+    box-sizing: border-box;
+}
+
+.content p {
     margin: 0;
     padding: 0;
     white-space: normal;
-    font-weight: 400; /* 明示 */
+    font-weight: 350;
 }
 
-/* ト書き用インデント */
+br {
+    line-height: 0.8em;
+}
+
 .indent-3 {
-    display: inline-block; /* 行頭に反映させる */
-    padding-top: 2em;     /* 3文字分下げ */
+    display: inline-block;
+    padding-top: 1em;
 }
 
 .indent-4 {
+    font-size: 0.85em;
     font-weight: 300;
-    font-size: 0.85em;   /* ← ここで小さくする */
 }
 
 .indent-5 {
     font-weight: 500;
 }
 
-/* スマホ用調整 */
-@media (max-width: 600px) {
+@media (min-width: 601px) {
     #reading-text {
-        font-size: 9vw;
-        line-height: 1.3;  /* 行間 */
-        height: 80vh;
-        padding-top: 1vh;
-        padding-bottom: 1vh;
-        padding-right: 9vw;
-        padding-left: 9vw;
-        
+        height: 90vh;
     }
-    .indent-3 {
-        padding-top: 1em;  /* ト書きインデント維持 */
+
+    .content {
+        font-size: 3vw;
+        line-height: 1.5;
+        padding-left: 4vw;
+        padding-right: 4vw;
+    }
+
+    .spacer {
+        width: 8vw;
+    }
+
+    .spacer:first-child {
+        width: 10vw;
+    }
+
+    .indent-4 {
+        font-size: 0.9em;
     }
 }
 </style>
@@ -71,24 +110,39 @@
 <body>
 
 <div id="reading-text">
-    <p><span class="indent-4">「これからあつまったりすること」は、私が広場で書いた散文や、集まることについての文章を、セリフとト書き（段が下がっている、状況について文）の形式にしたテキストです。ここで、身体を動かしたりしながら読み上げたりすることも、座って読むこともできます。</span></p>
-    <br>
-    <p><span class="indent-5">C</span></p><br>
-    <p>メッキ板の付いた箱馬と、その周りには、このテキストが埋め込まれたQRコードがある。</p><br><br>
-    <p><span class="indent-3">(箱馬の上で)靴のかかとを打ち付けると、太鼓になった箱馬が、リズムをとり始めた。ドン　ドン　ドン　ドン　四つ打ちのリズムで音が鳴る。<br>ドン　ドン　ドン　ドン　リズムに、合わせて動き回る。<br>ドン　ドン　ドン　ドン　リズムに、合わせて、広場を、歩き、回る。声を出している人もいる。</span></p>
-    <br><br>
-    <p><span class="indent-3">スマートフォンを持った人たちは、広場を歩きまわり、地面のQRコードを読み込む。看板の前を通り過ぎていく人もいる。QRコードを掲げる人もいる。</span></p>
-    
-   
+    <div class="spacer"></div>
+
+    <div class="content">
+        <p><span class="indent-4">「これからあつまったりすること」は、私が広場で書いた散文や、集まることについての文章を、セリフとト書き（段が下がっている、状況について文）の形式にしたテキストです。ここで、身体を動かしたりしながら読み上げたりすることも、座って読むこともできます。</span></p>
+        <br>
+
+        <p><span class="indent-5">C</span></p>
+        <br>
+
+        <p>メッキ板の付いた箱馬と、その周りには、このテキストが埋め込まれたQRコードがある。</p>
+        <br><br>
+
+        <p><span class="indent-3">(箱馬の上で)靴のかかとを打ち付けると、太鼓になった箱馬が、リズムをとり始めた。ドン　ドン　ドン　ドン　四つ打ちのリズムで音が鳴る。</span></p>
+        <br>
+        <p><span class="indent-3">ドン　ドン　ドン　ドン　リズムに、合わせて動き回る。</span></p>
+        <br>
+        <p><span class="indent-3">ドン　ドン　ドン　ドン　リズムに、合わせて、広場を、歩き、回る。声を出している人もいる。</span></p>
+        <br><br>
+
+        <p><span class="indent-3">スマートフォンを持った人たちは、広場を歩きまわり、地面のQRコードを読み込む。看板の前を通り過ぎていく人もいる。QRコードを掲げる人もいる。</span></p>
+    </div>
+
+    <div class="spacer"></div>
 </div>
 
 <script>
-    window.addEventListener("load", () => {
-      // ページを強制的に一番右へ
-      document.documentElement.scrollLeft = document.documentElement.scrollWidth;
-      document.body.scrollLeft = document.body.scrollWidth;
+window.addEventListener("load", () => {
+    const el = document.getElementById("reading-text");
+    requestAnimationFrame(() => {
+        el.scrollLeft = 1;
     });
-    </script>
+});
+</script>
 
 </body>
 </html>
