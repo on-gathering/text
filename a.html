@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>A</title>
+
 <style>
 /* =========================
    全体リセット
@@ -18,6 +19,36 @@ html, body {
    縦書きスクロール本体
 ========================= */
 #reading-text {
+    width: 100vw;
+    height: 85vh;
+
+    display: flex;
+    flex-direction: row;
+
+    overflow-x: auto;
+    overflow-y: hidden;
+
+    -webkit-overflow-scrolling: auto; /* 慣性スクロールOFF */
+
+    box-sizing: border-box;
+}
+
+/* =========================
+   左右スペーサー（端で止まらないため）
+========================= */
+.spacer {
+    width: 12vw;
+    flex-shrink: 0;
+}
+
+.spacer:first-child {
+    width: 16vw; /* 左端だけ少し広め */
+}
+
+/* =========================
+   テキスト本体（ここが縦書き）
+========================= */
+.content {
     writing-mode: vertical-rl;
     text-orientation: mixed;
 
@@ -28,51 +59,23 @@ html, body {
         "Hiragino Sans",
         sans-serif;
 
-    width: 100vw;
-    height: 85vh;
-
-    display: flex;
-    flex-direction: row;
-
-    overflow-x: auto;
-    overflow-y: hidden;
-
-    -webkit-overflow-scrolling: auto; /* Safari慣性OFF */
-
     font-size: 9vw;
     line-height: 1.3;
+
+    padding-left: 6vw;
+    padding-right: 6vw;
 
     box-sizing: border-box;
 }
 
 /* =========================
-   左右スペーサー（超重要）
-========================= */
-.spacer {
-    width: 12vw;
-    height: 6vw;
-    flex-shrink: 0;
-}
-.spacer:first-child {
-    width: 16vw;  /* ← 12 → 16 に */
-}
-
-/* =========================
-   テキスト本体
-========================= */
-.content {
-    padding-left: 6vw;
-    padding-right: 6vw;
-}
-
-/* =========================
    段落・改行
 ========================= */
-#reading-text p {
+.content p {
     margin: 0;
     padding: 0;
     white-space: normal;
-    font-weight: 300;
+    font-weight: 300; /* 太く見えないよう明示 */
 }
 
 br {
@@ -96,59 +99,72 @@ br {
     font-weight: 500;
 }
 
+/* =========================
+   PC表示（補助）
+========================= */
 @media (min-width: 601px) {
 
-#reading-text {
-    height: 90vh;
-    font-size: 3vw;      /* ← 以前に近いサイズ */
-    line-height: 1.5;
+    #reading-text {
+        height: 90vh;
+    }
 
-    -webkit-overflow-scrolling: auto;
-}
+    .content {
+        font-size: 3vw;
+        line-height: 1.5;
+        padding-left: 4vw;
+        padding-right: 4vw;
+    }
 
-.content {
-    padding-left: 4vw;
-    padding-right: 4vw;
-}
+    .spacer {
+        width: 8vw;
+    }
 
-.spacer {
-    width: 8vw;
-}
+    .spacer:first-child {
+        width: 10vw;
+    }
 
-/* 左端だけ少し広め（スマホほどではない） */
-.spacer:first-child {
-    width: 10vw;
+    .indent-4 {
+        font-size: 0.9em;
+    }
 }
-
-.indent-4 {
-    font-size: 0.9em;
-}
-}
-
 </style>
 </head>
 
 <body>
 
 <div id="reading-text">
-    <p><span class="indent-4">「これからあつまったりすること」は、私が広場で書いた散文や、集まることについての文章を、セリフとト書き（段が下がっている、状況について文）の形式にしたテキストです。ここで、身体を動かしたりしながら読み上げたりすることも、座って読むこともできます。</span></p>
-    <br>
-    <p><span class="indent-5">A</span></p><br>
-    <p>メッキ板の付いた箱馬と、その周りには、このテキストが埋め込まれたQRコードがある。</p><br><br>
-    <p><span class="indent-3">「パフォーマティビティ」という概念（ジュディス・バトラー）について、アーティストの田中功起が、身体の集合がもつ連鎖性として論じているテキストを、広場で読み上げてみる。</span></p>
-    <br>
-    <p>「集合した諸身体は、たとえそれらが黙って立っていようと、私たちは使い捨てにできるわけではない。東日本大震災後の反原発運動は、生きるための基盤／インフラストラクチャーに対する権利を主張するものであったと思う。人々は集まり、その集まりが呼びかけとなり、さらに多くの人々を集める。集合する身体を見た誰かが、そのパフォーマティヴィティに誘われてさらに集まっていく。身体はそこに集まるだけで生の権利を表明していたわけである。」</p>
-    <br>
-    <p><span class="indent-3">広場をうろついて、周りにいる他の人は、出かけた先で見かけたデモのことを思い出しているみたいに見える。</span></p><br>
-    <p><span class="indent-3">スマートフォンを持った人たちは、広場を歩きまわり、地面のQRコードを読み込む。看板の前を通り過ぎていく人もいる。QRコードを掲げる人もいる。</span></p>
-    <br>
-    <br>
-    <p><span class="indent-4">田中功起, パフォーマンス以後のパフォーマティヴィティについて,美術手帖, 2018,70（1068）,p121. <br></span></p>
-   
+    <div class="spacer"></div>
+
+    <div class="content">
+        <p><span class="indent-4">「これからあつまったりすること」は、私が広場で書いた散文や、集まることについての文章を、セリフとト書き（段が下がっている、状況について文）の形式にしたテキストです。ここで、身体を動かしたりしながら読み上げたりすることも、座って読むこともできます。</span></p>
+        <br>
+
+        <p><span class="indent-5">A</span></p>
+        <br>
+
+        <p>メッキ板の付いた箱馬と、その周りには、このテキストが埋め込まれたQRコードがある。</p>
+        <br><br>
+
+        <p><span class="indent-3">「パフォーマティビティ」という概念（ジュディス・バトラー）について、アーティストの田中功起が、身体の集合がもつ連鎖性として論じているテキストを、広場で読み上げてみる。</span></p>
+        <br>
+
+        <p>「集合した諸身体は、たとえそれらが黙って立っていようと、私たちは使い捨てにできるわけではない。東日本大震災後の反原発運動は、生きるための基盤／インフラストラクチャーに対する権利を主張するものであったと思う。人々は集まり、その集まりが呼びかけとなり、さらに多くの人々を集める。集合する身体を見た誰かが、そのパフォーマティヴィティに誘われてさらに集まっていく。身体はそこに集まるだけで生の権利を表明していたわけである。」</p>
+        <br>
+
+        <p><span class="indent-3">広場をうろついて、周りにいる他の人は、出かけた先で見かけたデモのことを思い出しているみたいに見える。</span></p>
+        <br>
+
+        <p><span class="indent-3">スマートフォンを持った人たちは、広場を歩きまわり、地面のQRコードを読み込む。看板の前を通り過ぎていく人もいる。QRコードを掲げる人もいる。</span></p>
+        <br><br>
+
+        <p><span class="indent-4">田中功起, パフォーマンス以後のパフォーマティヴィティについて, 美術手帖, 2018, 70（1068）, p121.</span></p>
+    </div>
+
+    <div class="spacer"></div>
 </div>
 
 <script>
-/* 初期位置を「右端寄り」に固定（Safari対策） */
+/* 初期位置を左端から少しだけずらす（Safari引っかかり防止） */
 window.addEventListener("load", () => {
     const el = document.getElementById("reading-text");
     requestAnimationFrame(() => {
