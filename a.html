@@ -168,14 +168,12 @@ br {
 </div>
 
 <script>
-/* 初期位置を左端から少しだけずらす（Safari引っかかり防止） */
-window.addEventListener("load", () => {
-    const el = document.getElementById("reading-text");
-    requestAnimationFrame(() => {
-        el.scrollLeft = 1;
+    window.addEventListener("load", () => {
+      // ページを強制的に一番右へ
+      document.documentElement.scrollLeft = document.documentElement.scrollWidth;
+      document.body.scrollLeft = document.body.scrollWidth;
     });
-});
-</script>
+    </script>
    
 <script>
 /* 初期位置を「右端寄り」に固定（Safari対策） */
