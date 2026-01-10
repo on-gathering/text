@@ -6,16 +6,21 @@
 <title>E</title>
 
 <style>
+/* =========================
+   全体リセット
+========================= */
 html, body {
     margin: 0;
     padding: 0;
     overflow: hidden;
 }
 
-/* 横スクロール枠 */
+/* =========================
+   縦書きスクロール本体
+========================= */
 #reading-text {
     width: 100vw;
-    height: 90vh;
+    height: 85vh;
 
     display: flex;
     flex-direction: row;
@@ -23,82 +28,107 @@ html, body {
     overflow-x: auto;
     overflow-y: hidden;
 
-    
-
-    font-family:
-        -apple-system,
-        BlinkMacSystemFont,
-        "Helvetica Neue",
-        "Yu Gothic",
-        sans-serif;
+    -webkit-overflow-scrolling: auto; /* 慣性スクロールOFF */
 
     box-sizing: border-box;
+
+    letter-spacing: 0.03em;
 }
 
-/* 左右スペーサー */
+/* =========================
+   左右スペーサー（端で止まらないため）
+========================= */
 .spacer {
-    width: 8vw;
+    width: 6vw;
     flex-shrink: 0;
 }
 
 .spacer:first-child {
-    width: 10vw;
+    width: 16vw; /* 左端だけ少し広め */
 }
 
-/* 本文 */
+/* =========================
+   テキスト本体（ここが縦書き）
+========================= */
 .content {
-    font-size: 3vw;
-    line-height: 1.5;
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+
+    font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Yu Gothic",
+        "Hiragino Sans",
+        sans-serif;
+
+    font-size: 9vw;
+    line-height: 1.3;
+
     padding-left: 5vw;
     padding-right: 2vw;
     padding-top: 4vh;
     padding-bottom: 4vh;
 
     box-sizing: border-box;
-    writing-mode: vertical-rl;
-    text-orientation: mixed;
 }
 
+/* =========================
+   段落・改行
+========================= */
 .content p {
     margin: 0;
     padding: 0;
     white-space: normal;
-    font-weight: 400;
+    font-weight: 350; /* 太く見えないよう明示 */
 }
 
 br {
-    line-height: 0.8em;
+    line-height: 0.8em; /* 行間用 */
 }
 
-/* ト書き */
+/* =========================
+   ト書き・強調
+========================= */
 .indent-3 {
     display: inline-block;
-    padding-top: 2em;
+    padding-top: 1em;
 }
 
 .indent-4 {
-    font-weight: 300;
     font-size: 0.85em;
+    font-weight: 300;
 }
 
 .indent-5 {
     font-weight: 500;
 }
 
-/* スマホ */
-@media (max-width: 600px) {
+/* =========================
+   PC表示（補助）
+========================= */
+@media (min-width: 601px) {
+
     #reading-text {
-        height: 80vh;
+        height: 90vh;
     }
 
     .content {
-        font-size: 9vw;
-        line-height: 1.3;
-        padding: 1vh 6vw;
+        font-size: 3vw;
+        line-height: 1.5;
+        padding-left: 4vw;
+        padding-right: 4vw;
     }
 
-    .indent-3 {
-        padding-top: 1em;
+    .spacer {
+        width: 8vw;
+    }
+
+    .spacer:first-child {
+        width: 10vw;
+    }
+
+    .indent-4 {
+        font-size: 0.9em;
     }
 }
 </style>
